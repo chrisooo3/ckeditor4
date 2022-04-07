@@ -98,6 +98,11 @@
 				if ( !evt.data.dataValue.match( /<img[\s\S]+data:/i ) ) {
 					return;
 				}
+				
+				// Do not continue if the pasted image contains base64 svg format
+				if ( !evt.data.dataValue.includes("data:image/svg+xml") ) {
+					return;
+				}
 
 				var data = evt.data,
 					// Prevent XSS attacks.
